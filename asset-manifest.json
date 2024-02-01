@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.cae6f6fe.css",
-    "main.js": "/static/js/main.da91cc39.js",
-    "index.html": "/index.html",
-    "main.cae6f6fe.css.map": "/static/css/main.cae6f6fe.css.map",
-    "main.da91cc39.js.map": "/static/js/main.da91cc39.js.map"
+    "main.css": "/captone-shoeshop-react/static/css/main.cae6f6fe.css",
+    "main.js": "/captone-shoeshop-react/static/js/main.58431ce6.js",
+    "index.html": "/captone-shoeshop-react/index.html",
+    "main.cae6f6fe.css.map": "/captone-shoeshop-react/static/css/main.cae6f6fe.css.map",
+    "main.58431ce6.js.map": "/captone-shoeshop-react/static/js/main.58431ce6.js.map"
   },
   "entrypoints": [
     "static/css/main.cae6f6fe.css",
-    "static/js/main.da91cc39.js"
+    "static/js/main.58431ce6.js"
   ]
 }
