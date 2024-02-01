@@ -1,0 +1,116 @@
+.profile {
+    padding-top: 1rem;
+    // background-color: #FFFCFC;
+
+    .profile-content {
+        max-width: 1280px;
+        .title {
+            color: #ffffff;
+            background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+            padding-left: 2.5rem;
+
+            span {
+                font-size: 2.5rem;
+            }
+
+            ;
+        }
+
+        ;
+
+        .container-fluid {
+            .profile_show {
+                .content {
+                    .item {
+
+                        background: #F8F8F8;
+
+                        /* shadow */
+                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+                        .card-top {
+                            .card-img-top {
+                                width: 100%;
+                                margin: auto;
+                            }
+
+                            ;
+
+                            .fa-heart {
+                                color: #ff0000;
+                                position: absolute;
+                                font-size: 1.8rem;
+                                right: 1rem;
+                                top: 1rem
+                            }
+                        }
+
+
+                        ;
+
+                        .card-title {
+                            margin: 0;
+                            width: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            font-size: 1.5rem
+                        }
+
+                        ;
+
+                        .card-descript {
+                            font-size: 1.25rem;
+                            color: #CBC9C9;
+                            width: 85%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        ;
+
+                        .card-footer {
+                            .button-buy {
+                                border: none;
+                                border-radius: 0;
+                                padding: 0.8rem 1rem;
+                                background-color: #9DE167;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+
+                                &:hover {
+                                    background-color: #FF9800;
+                                    transition: 0.5s
+                                }
+
+                                ;
+
+                                span {
+                                    font-size: 1.5rem;
+                                    color: #000;
+                                    font-weight: 400;
+                                }
+                            }
+
+                            ;
+
+                            .price {
+                                background-color: #DEDDDC;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                .price-text {
+                                    font-size: 1.5rem;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
