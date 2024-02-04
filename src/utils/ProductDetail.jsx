@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 const ProductDetail = (props) => {
@@ -17,8 +17,6 @@ const ProductDetail = (props) => {
     useEffect(() => {
         getProductDetailApi();
     }, [param.id]);
-
-    const {useCart} = useSelector(state => state.cartReducer)    
 
     return (
         <div onLoad={() => { setCount(1) }}>

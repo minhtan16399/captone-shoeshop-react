@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, unstable_HistoryRouter as HistoryRouter, HashRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import HomeTemplate from './templates/HomeTemplate';
 import UserTemplate from './templates/UserTemplate';
@@ -23,33 +23,35 @@ function App() {
 
   return (
     <Provider store={store}>
-      <HistoryRouter history={history}>
-        <Routes>
-          <Route path='' element={<HomeTemplate />}>
-            <Route path='cart' element={<Cart/>}></Route>
-            <Route path='login' element={<Login />}></Route>
-            <Route path='register' element={<Register />}></Route>
-            <Route path='' element={<Home />}>
-              <Route index element={<Carousel />}></Route>
-              <Route path='detail'>
-                <Route path=':id' element={<ProductDetail />}></Route>
+     
+        <HashRouter>
+          <Routes>
+            <Route path='' element={<HomeTemplate />}>
+              <Route path='cart' element={<Cart />}></Route>
+              <Route path='login' element={<Login />}></Route>
+              <Route path='register' element={<Register />}></Route>
+              <Route path='' element={<Home />}>
+                <Route index element={<Carousel />}></Route>
+                <Route path='detail'>
+                  <Route path=':id' element={<ProductDetail />}></Route>
+                </Route>
               </Route>
-            </Route>
-            <Route path='profile' element={<Profile />}>
-              <Route path='' element={<ProfileDetail />}>
-                <Route path='' element={<HistoryList />}></Route>
-                <Route path='favourite' element={<Favourite />}></Route>
+              <Route path='profile' element={<Profile />}>
+                <Route path='' element={<ProfileDetail />}>
+                  <Route path='' element={<HistoryList />}></Route>
+                  <Route path='favourite' element={<Favourite />}></Route>
+                </Route>
+                <Route path='update' element={<UpdateUser />}></Route>
               </Route>
-              <Route path='update' element={<UpdateUser />}></Route>
+              <Route path='search' element={<Search />}></Route>
             </Route>
-            <Route path='search' element={<Search />}></Route>
-          </Route>
-          <Route path='user' element={<UserTemplate />}>
-          </Route>
-          <Route path='admin' element>
-          </Route>
-        </Routes>
-      </HistoryRouter>
+            <Route path='user' element={<UserTemplate />}>
+            </Route>
+            <Route path='admin' element>
+            </Route>
+          </Routes>
+        </HashRouter>
+     
     </Provider>
   )
 }

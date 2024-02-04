@@ -22,10 +22,10 @@ const Header = () => {
         <header>
             <div className='header py-2 px-3'>
                 <div className="container-fluid d-flex justify-content-between">
-                    <img src="/img/image 3.png" alt='logo' />
+                    <img src="https://drive.google.com/thumbnail?id=1CeD95ncXOaWibxr2mgcvo2ukvknMuiZt" alt='logo' />
                     <div className="d-flex">
                         <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <NavLink><img className="modal-body" src="/img/image 8.png" alt='icon cart' />
+                            <NavLink><img className="modal-body" src="https://drive.google.com/thumbnail?id=1Yi4kwvNlLjbgndEW5ZcYtalhAQbEi_59" alt='icon cart' />
                             </NavLink>
                             <span className="quatity-count me-3">0</span>
                         </div>

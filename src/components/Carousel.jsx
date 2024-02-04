@@ -8,7 +8,7 @@ const Carousel = () => {
                     <div className='carousel-item active'>
                         <div className="mx-auto row">
                             <div className='carousel-img col-12 col-sm-8 mx-sm-0 px-auto'>
-                                <img src="./img/image 5.png" className="" alt="..." />
+                                <img src="https://drive.google.com/thumbnail?id=10OXQmB96-BMeRBzBgSg8BfaN1hw7q5ch" className="" alt="..." />
                             </div>
                             <div className="carousel-caption d-none d-sm-block col-4">
                                 <h5>Product name</h5>
@@ -20,7 +20,7 @@ const Carousel = () => {
                     <div className='carousel-item'>
                         <div className="mx-auto row">
                             <div className='carousel-img col-12 col-sm-8 mx-sm-0 px-auto'>
-                                <img src="./img/image 5.png" className="" alt="..." />
+                                <img src="https://drive.google.com/thumbnail?id=10OXQmB96-BMeRBzBgSg8BfaN1hw7q5ch" className="" alt="..." />
                             </div>
                             <div className="carousel-caption d-none d-sm-block col-4">
                                 <h5>Product name</h5>
@@ -32,7 +32,7 @@ const Carousel = () => {
                     <div className='carousel-item'>
                         <div className="mx-auto row">
                             <div className='carousel-img col-12 col-sm-8 mx-sm-0 px-auto'>
-                                <img src="./img/image 5.png" className="" alt="..." />
+                                <img src="https://drive.google.com/thumbnail?id=10OXQmB96-BMeRBzBgSg8BfaN1hw7q5ch" className="" alt="..." />
                             </div>
                             <div className="carousel-caption d-none d-sm-block col-4">
                                 <h5>Product name</h5>
