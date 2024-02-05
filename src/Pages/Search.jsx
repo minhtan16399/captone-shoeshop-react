@@ -20,7 +20,6 @@ const Search = () => {
         }
     })
     const getProductByKeyword = async () => {
-
         const res = await axios({
             url: `https://shop.cyberlearn.vn/api/Product?keyword=${tuKhoa}`,
             method: 'GET'

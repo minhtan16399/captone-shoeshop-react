@@ -38,6 +38,7 @@ const Register = () => {
                     "phone": users.phone,
                 },
             });
+            console.log(response);
             alert(response.data.message);
         } catch (error) {
             alert(error.response.data.message);

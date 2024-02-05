@@ -46,8 +46,9 @@ export const loginApiAction = (userLogin) => {
             localStorage.setItem(TOKEN, res.data.content.accessToken);
             localStorage.setItem(USER_LOGIN, JSON.stringify(res.data.content));
             const action = loginAction(res.data.content);
-            dispatch(action)
+            dispatch(action);
         } catch (err) {
+            alert(err.response.data.message);
             history.push('/login')
         }
     }
@@ -66,8 +67,9 @@ export const loginFacebookApiAction = (userLogin) => {
             localStorage.setItem(TOKEN, res.data.content.accessToken);
             localStorage.setItem(USER_LOGIN, JSON.stringify(res.data.content));
             const action = loginAction(res.data.content);
-            dispatch(action)
+            dispatch(action);
         } catch (err) {
+            alert(err.response.data.message);
             history.push('/login')
         }
     }

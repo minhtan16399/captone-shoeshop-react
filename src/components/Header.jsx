@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 const Header = () => {
-    const { userProfile } = useSelector(state => state.userReducer);
     const [formSignShown, setFormSignShown] = useState(false);
     const [userShown, setUserShown] = useState(false);
     const toggleLogOut = () => {
@@ -18,6 +16,14 @@ const Header = () => {
     useEffect(
         setUserShown
     );
+
+    useEffect(()=>{
+        if(formSignShown == false) {
+            localStorage.clear()
+        } else {
+            console.log('loaded ok');
+        }
+    })
     return (
         <header>
             <div className='header py-2 px-3'>

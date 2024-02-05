@@ -1,6 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Divider, Radio, Table } from 'antd';
+const columns = [
+    {
+        title: 'Id',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Name',
+        dataIndex: 'name',
+    },
+    {
+        title: 'Image',
+        dataIndex: 'image',
+        render: (text) => <img src={text} style={{width:50}}/>,
+    },
+    {
+        title: 'Price',
+        dataIndex: 'price',
+    },
+    {
+        title: 'Quantity',
+        dataIndex: 'quantity',
+    },
+    {
+        title: 'Amount',
+        dataIndex: 'amount',
+        render:(text) => <span>{}</span>
+    }
+];
 
-const Cart = () => {
+// rowSelection object indicates the need for row selection
+const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+};
+
+export const Cart = () => {
+
+    const cartItem = useSelector(state => state.cartReducer.cart);
+    const showCart = () => {
+        console.log(cartItem);
+    };
+
+    useEffect(() => {
+        showCart()
+    }, []);
+
     return (
         <div>
             <div className="products mx-auto mt-3">
@@ -11,24 +58,18 @@ const Cart = () => {
                         </div>
                     </div>
                     <div className="container-fluid">
-                        <div className="products_show py-3 mt-4 w-100 mx-auto">
+                        <div className="products_show py-3 w-100 mx-auto">
                             <div className='container-fluid'>
-                                <table className='table'>
-                                    <thead>
-                                        <tr>
-                                            <th>Mã SP</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Giá bán</th>
-                                            <th>Số lượng</th>
-                                            <th>Thành tiền</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
+                                <div>
+                                    <Divider />
+                                    <Table
+                                        rowSelection={{
+                                            ...rowSelection,
+                                        }}
+                                        columns={columns}
+                                        dataSource={cartItem}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,6 +77,6 @@ const Cart = () => {
             </div>
         </div>
     )
-}
+};
 
 export default Cart

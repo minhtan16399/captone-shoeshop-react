@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { addCartAction } from '../redux/Reducers/CartReducer';
+import { useDispatch } from 'react-redux';
 
 const ProductDetail = (props) => {
+
+    const dispatch = useDispatch();
     const [count, setCount] = useState(1);
     const [productDetail, setProductDetail] = useState();
     const param = useParams();
@@ -11,7 +14,13 @@ const ProductDetail = (props) => {
         const res = await axios({
             url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${param.id}`
         });
-        setProductDetail(res.data.content)
+        setProductDetail(res.data.content);
+    };
+
+    const addToCart = (prod) => {
+        const action = addCartAction(prod);
+        dispatch(action);
+        console.log(action);
     };
 
     useEffect(() => {
@@ -63,7 +72,16 @@ const ProductDetail = (props) => {
                                             setCount(count + 1)
                                         }}><i className="fa-solid fa-plus" /></button>
                                 </div>
-                                <button id="addCart" className="btn btn-success px-4 py-2" onClick={()=>{
+                                <button id="addCart" className="btn btn-success px-4 py-2" onClick={() => {
+                                    const  prod  = {
+                                        key: productDetail.id,
+                                        id: productDetail.id,
+                                        image: productDetail.image,
+                                        name: productDetail.name,
+                                        quantity: count,
+                                        price:productDetail.price
+                                    };
+                                    addToCart(prod);
                                 }}>Add to cart</button>
                             </div>
                         </div>

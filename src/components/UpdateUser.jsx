@@ -17,12 +17,11 @@ const UpdateUser = () => {
         },
         validationSchema: yup.object().shape({
             name: yup.string().min(3, "Must be at least 3 characters").max(20, "Must be 20 characters or less"),
-            phone: yup.string().min(6, 'phải nhiều hơn 6 bằng ký tự').max(10, 'phải bé hơn bằng 10 ký tự'),
-            email: yup.string().email("Invalid email address"),
+            phone: yup.string().min(6, 'Must be at least 6 characters').max(10, 'Must be 10 characters or less'),
         }),
 
         onSubmit: (values) => {
-            console.log(values);
+            // console.log(values);
             submitData(values)
         }
     });
@@ -32,15 +31,17 @@ const UpdateUser = () => {
             const data = {
                 "email":userProfile.email,
                 "passord":users.passord,
-                "name":users.name,
-                "phone":users.phone,
-                "gender":users.gneder
+                "name":(users.name || userProfile.name),
+                "phone":(users.phone || userProfile.phone),
+                "gender":(users.gneder || userProfile.gender)
             };
+            console.log(users);
             const res = await http.post('/Users/updateProfile', data, {headers:{"Content-Type" : "application/json"}})
-            // alert(res.data.message);
+            alert(res.data.content);
+            // console.log(res);
         } catch (error) {
-            // alert(error.res.data.message);
-            console.log(error);
+            alert(error.res.data.content);
+            // console.log(error);
         };
     };
 

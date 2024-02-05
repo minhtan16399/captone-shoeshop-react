@@ -1,38 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
-    hidden: true,
-    cartItems: 0,
-    itemsInCart: [],
-    quantity: 0,
-    totalCount: 0,
+    cart: []
 };
 
-export const CartReducer = createSlice({
-    name: "cart",
+const cartReducer = createSlice({
+    name: 'cartReducer',
     initialState,
     reducers: {
-        removeItem: (state, action) => { },
-        removeAll: (state) => {
-            state.cartItems = 0;
-            state.itemsInCart = [];
-            state.totalCount = 0;
-        },
-
-        addToCart: (state, action) => {
-            const itemInCart = state.cart.find((item) => item.id === action.payload.id);
-            if (itemInCart) {
-                itemInCart.quantity++;
+        addCartAction: (state, action) => {
+            let product = action.payload;
+            let productInCart = { ...product };
+            let prod = state.cart.find(index => index.id === productInCart.id);
+            if (prod) {
+                prod.quantity += 1
             } else {
-                state.cart.push({ ...action.payload, quantity: 1 });
+                state.cart.push(productInCart)
+            };
+            // console.log(productInCart);
+            // console.log(state);
+        },
+        deleteCartAction: (state, action) => {
+            const productIdDelete = action.payload;
+            state.cart = state.cart.filter(prod => prod.productId !== productIdDelete);
+        },
+        countCartAction: (state, action) => {
+            let { productId, quantity } = action.payload;
+            let productInCart = state.cart.find(prod => prod.productId === productId);
+            if (productInCart) {
+                productInCart.quantity += quantity;
+                if (productInCart.quantity < 1) {
+                    state.cart = state.cart.filter(prod => prod.productId !== productId);
+                }
             }
-        },
-
-        showCart: (state) => {
-            state.hidden = !state.hidden;
-        },
-    },
+        }
+    }
 });
 
-export const { showCart, addToCart, removeAll, removeItem } = CartReducer.actions;
+export const { addCartAction, deleteCartAction, countCartAction } = cartReducer.actions
 
-export default CartReducer.reducer;
+export default cartReducer.reducer

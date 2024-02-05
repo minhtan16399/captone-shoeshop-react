@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, unstable_HistoryRouter as HistoryRouter, HashRouter } from 'react-router-dom';
+import { Routes, Route, unstable_HistoryRouter as HistoryRouter} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import HomeTemplate from './templates/HomeTemplate';
 import UserTemplate from './templates/UserTemplate';
@@ -20,11 +20,9 @@ import Cart from './components/Cart';
 
 export const history = createBrowserHistory()
 function App() {
-
   return (
     <Provider store={store}>
-     
-        <HashRouter>
+        <HistoryRouter history={history}>
           <Routes>
             <Route path='' element={<HomeTemplate />}>
               <Route path='cart' element={<Cart />}></Route>
@@ -50,7 +48,7 @@ function App() {
             <Route path='admin' element>
             </Route>
           </Routes>
-        </HashRouter>
+        </HistoryRouter>
      
     </Provider>
   )

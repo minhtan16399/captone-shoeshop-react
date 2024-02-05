@@ -1,14 +1,21 @@
-import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import ReactFacebookLogin from 'react-facebook-login';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { loginApiAction, loginFacebookApiAction } from '../redux/Reducers/UserReducer';
 import { useDispatch } from 'react-redux';
-import { updateOnOkayAction } from '../redux/Reducers/DrawerReducer';
+import { history } from '../App';
+import { USER_LOGIN } from '../utils/config';
 
 const Login = () => {
+  const loginSuccessful = () => {
+    document.querySelector('#formSignShown').className = 'd-none';
+    document.querySelector('#userShown').className = 'd-block';
+    history.push('/')
+  };
+
   const dispatch = useDispatch();
+
   const formLogin = useFormik({
     initialValues: {
       email: '',
@@ -16,7 +23,6 @@ const Login = () => {
     },
     onSubmit: async (userLogin) => {
       submitData(userLogin)
-      // loginSuccessful();
     }
   });
 
@@ -24,10 +30,13 @@ const Login = () => {
     try {
       const action = loginApiAction(userLogin);
       dispatch(action);
-      // alert(response.data.message);
-      loginSuccessful();
+      if (localStorage.getItem(USER_LOGIN)) {
+        const success = loginSuccessful();
+      } else {
+        console.log('fail');
+      }
     } catch (error) {
-      alert(error.response.data.message);
+      console.log(error);
     };
   };
 
@@ -39,18 +48,14 @@ const Login = () => {
     try {
       const action = loginFacebookApiAction(token);
       dispatch(action);
-      loginSuccessful();
+      if (localStorage.getItem(USER_LOGIN)) {
+        const success = loginSuccessful();
+      } else {
+        console.log('fail');
+      }
     } catch (error) {
-      alert(error.response.data.message);
+      console.log(error);
     }
-  };
-
-  const navigate = useNavigate();
-
-  const loginSuccessful = () => {
-    document.querySelector('#formSignShown').className = 'd-none';
-    document.querySelector('#userShown').className = 'd-block';
-    navigate('/')
   };
 
   const [passwordShown, setPasswordShown] = useState(false);
@@ -63,13 +68,8 @@ const Login = () => {
     setPasswordShown(!passwordShown);
   };
 
-  useEffect(() => {
-    const action = updateOnOkayAction(formLogin.handleSubmit);
-    dispatch(action)
-  }, []);
-
   return (
-    <div className="form_login bg-body mx-auto col-10 col-md-6" onSubmit={formLogin.handleSubmit}>
+    <div className="form_login bg-body mx-auto col-10 col-md-6" onSubmit={formLogin.handleSubmit} >
       <form className="container">
         <div className="form_content card my-3">
           <div className="card-header text-center py-3">
